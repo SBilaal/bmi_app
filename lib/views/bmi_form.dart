@@ -1,5 +1,4 @@
 import 'package:bmi_app/bmi_result_view.dart';
-import 'package:bmi_app/views/bmi_result_display.dart';
 
 import 'package:flutter/material.dart';
 import 'package:bmi_app/bmi_calculator.dart';
@@ -106,7 +105,6 @@ class _CustomTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final widgetColor = Theme.of(context).primaryColor;
     return Padding(
       padding: const EdgeInsets.only(bottom: 20.0),
       child: TextFormField(

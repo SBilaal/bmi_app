@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'dart:async';
 
 import 'bmi_view.dart';
 
@@ -21,29 +20,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-// class BMISplashScreen extends StatefulWidget {
-//   @override
-//   _BMISplashScreenState createState() => _BMISplashScreenState();
-// }
-
-// class _BMISplashScreenState extends State<BMISplashScreen> {
-
-//   @override
-//   void initState() {
-//     super.initState();
-//     Future.delayed(Duration(seconds: 3), () => Navigator.push(context, MaterialPageRoute(
-//       builder: (context) => BMICalculatorView(),
-//     )));
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       body: Container(
-//         alignment: Alignment.center,
-//         child: FlutterLogo(),
-//       ),
-//     );
-//   }
-// }
