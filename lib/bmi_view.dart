@@ -6,16 +6,15 @@ import 'views/bmi_appbar.dart';
 
 class BMICalculatorView extends StatelessWidget {
   Widget build(BuildContext context) {
-    SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom]);
     SystemChrome.setPreferredOrientations(
         [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
 
     final textFieldCommand = Container(
-      padding: EdgeInsets.fromLTRB(20.0, 30.0, 40.0, 0.0),
+      padding: EdgeInsets.fromLTRB(20.0, 30.0, 20.0, 0.0),
       child: Text(
         'Calculate your BMI by inputting the following data.',
         style: TextStyle(
-          fontSize: 30.0,
+          fontSize: 21.0,
           fontWeight: FontWeight.w600,
           color: Color(0xFF33383F),
         ),
@@ -23,16 +22,18 @@ class BMICalculatorView extends StatelessWidget {
     );
 
     return Scaffold(
-      resizeToAvoidBottomPadding: false,
-      body: Column(
+      body: ListView(
         children: <Widget>[
-          BMIAppbar(),
+          Container(
+            alignment: Alignment.centerLeft,
+            child: BMIAppbar(),
+          ),
           textFieldCommand,
           SizedBox(
-            height: 100.0,
+            height: 79.0,
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            padding: EdgeInsets.only(left: 20.0, right: 20.0, bottom: 30.0),
             child: BMIInputForm(),
           ),
         ],
@@ -40,8 +41,3 @@ class BMICalculatorView extends StatelessWidget {
     );
   }
 }
-
-
-
-
-

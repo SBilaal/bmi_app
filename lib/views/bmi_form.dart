@@ -18,7 +18,6 @@ class _BMIInputFormState extends State<BMIInputForm> {
 
   @override
   Widget build(BuildContext context) {
-    final deviceHeight = MediaQuery.of(context).size.height;
     final widgetColor = Theme.of(context);
 
     final calculateButton = Container(
@@ -54,11 +53,11 @@ class _BMIInputFormState extends State<BMIInputForm> {
           highlightColor: Colors.white,
           child: Container(
             alignment: Alignment.center,
-            height: deviceHeight * 0.070,
+            height: 46.0,
             child: Text(
               'Calculate BMI',
               style: TextStyle(
-                fontSize: 20.0,
+                fontSize: 14.0,
                 fontFamily: 'CircularStd-Book',
                 color: Colors.white,
               ),
@@ -76,17 +75,18 @@ class _BMIInputFormState extends State<BMIInputForm> {
             _CustomTextField(
                 hintText: 'Weight',
                 prefixIcon: Image.asset('images/weight.png',
-                    width: 1.0, height: 1.0, scale: 3.0),
+                    width: 1.0, height: 1.0, scale: 4.0),
                 suffixText: 'Kg',
-                controller: weightController),
+                controller: weightController,
+                validatorText: 'weight',),
             _CustomTextField(
                 hintText: 'Height',
                 prefixIcon: Image.asset('images/height.png',
-                    width: 1.0, height: 1.0, scale: 3.0),
+                    width: 1.0, height: 1.0, scale: 4.0),
                 suffixText: 'm',
-                controller: heightController),
+                controller: heightController,
+                validatorText: 'height',),
             calculateButton,
-            //ResultDisplay(result),
           ],
         ),
       ),
@@ -95,13 +95,14 @@ class _BMIInputFormState extends State<BMIInputForm> {
 }
 
 class _CustomTextField extends StatelessWidget {
-  String hintText;
-  Widget prefixIcon;
-  String suffixText;
-  TextEditingController controller;
+  final String hintText;
+  final Widget prefixIcon;
+  final String suffixText;
+  final String validatorText;
+  final TextEditingController controller;
 
   _CustomTextField(
-      {this.hintText, this.prefixIcon, this.suffixText, this.controller});
+      {this.hintText, this.prefixIcon, this.suffixText, this.controller, this.validatorText});
 
   @override
   Widget build(BuildContext context) {
@@ -113,25 +114,25 @@ class _CustomTextField extends StatelessWidget {
               double.parse(value) > 999 ||
               RegExp(r'[^\w.]').hasMatch(value) ||
               double.parse(value) <= 0) {
-            return 'Please enter a valid number';
+            return 'Please enter a valid $validatorText.';
           }
         },
         controller: controller,
         keyboardType: TextInputType.number,
-        style: TextStyle(fontSize: 20.0, color: Colors.black),
+        style: TextStyle(fontSize: 14.0, color: Colors.black),
         decoration: InputDecoration(
           prefixIcon: prefixIcon,
           hintText: hintText,
           suffixText: suffixText,
           suffixStyle: TextStyle(
             color: Color(0xFFAEB4C0),
-            fontSize: 20.0,
+            fontSize: 14.0,
             fontWeight: FontWeight.w500,
             fontFamily: 'CircularStd-Book',
           ),
           hintStyle: TextStyle(
             color: Color(0xFFAEB4C0),
-            fontSize: 20.0,
+            fontSize: 14.0,
             fontFamily: 'CircularStd-Book',
           ),
           border: OutlineInputBorder(

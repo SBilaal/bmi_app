@@ -15,6 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         fontFamily: 'CircularStd-Medium',
         primaryColor: Color(0xFF0DEEDB),
+        cursorColor: Color(0xFF0DEEDB),
       ),
       home: BMICalculatorView(),
     );
