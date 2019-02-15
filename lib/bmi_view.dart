@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 import 'views/bmi_form.dart';
 import 'views/bmi_appbar.dart';
 
 class BMICalculatorView extends StatelessWidget {
   Widget build(BuildContext context) {
-    SystemChrome.setPreferredOrientations(
-        [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+    
 
     final textFieldCommand = Container(
       padding: EdgeInsets.fromLTRB(20.0, 30.0, 20.0, 0.0),

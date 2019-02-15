@@ -9,6 +9,7 @@ class BMIInputForm extends StatefulWidget {
 
 class _BMIInputFormState extends State<BMIInputForm> {
   final _formKey = GlobalKey<FormState>();
+  final focusNodex = FocusNode();
   List<dynamic> bmiStatus;
   String bmiValue;
   int bmiValueColor;
@@ -58,6 +59,7 @@ class _BMIInputFormState extends State<BMIInputForm> {
               'Calculate BMI',
               style: TextStyle(
                 fontSize: 14.0,
+                fontWeight: FontWeight.w600,
                 fontFamily: 'CircularStd-Book',
                 color: Colors.white,
               ),
@@ -78,8 +80,10 @@ class _BMIInputFormState extends State<BMIInputForm> {
                     width: 1.0, height: 1.0, scale: 4.0),
                 suffixText: 'Kg',
                 controller: weightController,
-                validatorText: 'weight',),
+                validatorText: 'weight',
+                onEditingComplete: (){FocusScope.of(context).requestFocus(focusNodex);},),
             _CustomTextField(
+              focusNode: focusNodex,
                 hintText: 'Height',
                 prefixIcon: Image.asset('images/height.png',
                     width: 1.0, height: 1.0, scale: 4.0),
@@ -100,9 +104,11 @@ class _CustomTextField extends StatelessWidget {
   final String suffixText;
   final String validatorText;
   final TextEditingController controller;
+  final FocusNode focusNode;
+  final Function onEditingComplete;
 
   _CustomTextField(
-      {this.hintText, this.prefixIcon, this.suffixText, this.controller, this.validatorText});
+      {this.hintText, this.prefixIcon, this.suffixText, this.controller, this.validatorText, this.focusNode, this.onEditingComplete,});
 
   @override
   Widget build(BuildContext context) {
@@ -117,6 +123,8 @@ class _CustomTextField extends StatelessWidget {
             return 'Please enter a valid $validatorText.';
           }
         },
+        onEditingComplete: onEditingComplete,
+        focusNode: focusNode,
         controller: controller,
         keyboardType: TextInputType.number,
         style: TextStyle(fontSize: 14.0, color: Colors.black),
